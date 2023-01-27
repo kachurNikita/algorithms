@@ -31,6 +31,4 @@ def bubble_sort(array):
     return array
 
 
-
-
 print(bubble_sort(bubble_arr))
