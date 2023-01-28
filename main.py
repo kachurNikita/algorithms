@@ -31,4 +31,27 @@ def bubble_sort(array):
     return array
 
 
-print(bubble_sort(bubble_arr))
+# print(bubble_sort(bubble_arr))
+
+# Quick sort algorithm
+
+quick_sort_array = [4, 1, 3, 7, 5, 0, 9, 2,]
+
+
+def quick_sort(array):
+    if len(array) <= 1:
+        return array
+    else:
+        left_arr = []
+        right_arr = []
+        pivot = array[0]
+        for l in range(len(array)):
+            if array[l] < pivot:
+                left_arr.append(array[l])
+        for b in range(len(array)):
+            if array[b] > pivot:
+                right_arr.append(array[b])
+        return quick_sort(left_arr) + [pivot] + quick_sort(right_arr)
+
+
+print(quick_sort(quick_sort_array))
