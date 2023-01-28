@@ -14,11 +14,10 @@ def selection_sort(array):
 
         if index != i:
             # old_value
-            temporary_var = array[i]
-            array[i] = array[index]
-            array[index] = temporary_var
+            array[i], array[index] = array[index], array[i]
     return array
 
+selection_sort(arr)
 
 # Bubble sort algorithm / sorting algorithm O(N**2) time complexity
 bubble_arr = [1, -1, 5, 2, 9, 4]
