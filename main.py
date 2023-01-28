@@ -1,6 +1,6 @@
 arr = [8, 11, -1, 24, 0, 3, 2, -100]
 
-
+# Selection sort algorithm
 def selection_sort(array):
     for i in range(len(array) - 1):
         min_value = array[i]
@@ -18,8 +18,6 @@ def selection_sort(array):
     return array
 
 
-
-
 bubble_arr = [1, -1, 5, 2, 9, 4]
 
 def bubble_sort(array):
@@ -30,8 +28,8 @@ def bubble_sort(array):
                 array[j + 1], array[j] = array[j], array[j + 1]
     return array
 
-
 # print(bubble_sort(bubble_arr))
+
 
 # Quick sort algorithm
 
@@ -55,3 +53,24 @@ def quick_sort(array):
 
 
 print(quick_sort(quick_sort_array))
+
+
+# Binary search algorithm
+binary_search_arr = [1, 20, 22, 25, 30, 50]
+
+
+def binary_search(array, target):
+    left = 0
+    right = len(array) - 1
+    while left <= right:
+        middle = (left + right) // 2
+        if array[middle] == target:
+            return True
+        elif array[middle] < target:
+            left = middle + 1
+        elif array[middle] > target:
+            right = middle - 1
+    return False
+
+
+print(binary_search(binary_search_arr, 1))
