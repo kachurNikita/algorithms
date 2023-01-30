@@ -3,6 +3,7 @@
 
 arr = [8, 11, -1, 24, 0, 3, 2, -100]
 
+
 def selection_sort(array):
     for i in range(len(array) - 1):
         min_value = array[i]
@@ -17,10 +18,12 @@ def selection_sort(array):
             array[i], array[index] = array[index], array[i]
     return array
 
+
 selection_sort(arr)
 
 # Bubble sort algorithm / sorting algorithm O(N**2) time complexity
 bubble_arr = [1, -1, 5, 2, 9, 4]
+
 
 def bubble_sort(array):
     n = len(array)
@@ -36,6 +39,7 @@ def bubble_sort(array):
 # Quick sort algorithm / sorting algorithm O(n**2) time complexity
 
 quick_sort_array = [4, 1, 3, 7, 5, 0, 9, 2,]
+
 
 def quick_sort(array):
     if len(array) <= 1:
@@ -74,4 +78,33 @@ def binary_search(array, target):
     return False
 
 
-print(binary_search(binary_search_arr, 1))
+# print(binary_search(binary_search_arr, 1))
+
+
+# I didn't find algorithm name, but anyway it is  necessary to understand, in order to learn merge_sort
+array_1 = [2, 4, 5, 8, 21, 50]
+array_2 = [-10, 0, 6, 11, 18]
+
+# -10, 0, 2, 4, 5, 6, 8, 11, 18,
+
+
+def pre_merge_sort(arr_1, arr_2):
+    new_list = []
+    i = j = 0
+    while i < len(arr_1) and j < len(arr_2):
+        if arr_1[i] < arr_2[j]:
+            new_list.append(arr_1[i])
+            i += 1
+        else:
+            new_list.append(arr_2[j])
+            j += 1
+    while i < len(arr_1):
+        new_list.append(arr_1[i])
+        i += 1
+    while j < len(arr_2):
+        new_list.append(array_2[j])
+        j += 1
+    return new_list
+
+
+print(pre_merge_sort(array_1, array_2))
