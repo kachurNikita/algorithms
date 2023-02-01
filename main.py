@@ -19,7 +19,7 @@ def selection_sort(array):
     return array
 
 
-selection_sort(arr)
+# selection_sort(arr)
 
 # Bubble sort algorithm / sorting algorithm O(N**2) time complexity
 bubble_arr = [1, -1, 5, 2, 9, 4]
@@ -57,7 +57,7 @@ def quick_sort(array):
         return quick_sort(left_arr) + [pivot] + quick_sort(right_arr)
 
 
-print(quick_sort(quick_sort_array))
+# print(quick_sort(quick_sort_array))
 
 
 # Binary search algorithm / searching algorithm O(log N) time complexity
@@ -88,23 +88,73 @@ array_2 = [-10, 0, 6, 11, 18]
 # -10, 0, 2, 4, 5, 6, 8, 11, 18,
 
 
-def pre_merge_sort(arr_1, arr_2):
-    new_list = []
+# def pre_merge_sort(arr_1, arr_2):
+#     new_list = []
+#     i = j = 0
+#     while i < len(arr_1) and j < len(arr_2):
+#         if arr_1[i] < arr_2[j]:
+#             new_list.append(arr_1[i])
+#             i += 1
+#         else:
+#             new_list.append(arr_2[j])
+#             j += 1
+#     while i < len(arr_1):
+#         new_list.append(arr_1[i])
+#         i += 1
+#     while j < len(arr_2):
+#         new_list.append(array_2[j])
+#         j += 1
+#     return new_list
+
+
+# print(pre_merge_sort(array_1, array_2))
+
+merge_sort_arr = [3, 4, 2, 1, -10, 11, 22, 35, 0]
+
+
+def divide_and_conquer(arr):
+    if len(arr) == 1:
+        return arr
+    else:
+        middle = len(arr)// 2
+        left_part = divide_and_conquer(arr[:middle])
+        right_part = divide_and_conquer(arr[middle:])
+        return merge_sort(left_part, right_part)
+
+
+def merge_sort(arr_1, arr_2):
+    sorted_arr = []
     i = j = 0
     while i < len(arr_1) and j < len(arr_2):
         if arr_1[i] < arr_2[j]:
-            new_list.append(arr_1[i])
+            sorted_arr.append(arr_1[i])
             i += 1
         else:
-            new_list.append(arr_2[j])
+            sorted_arr.append(arr_2[j])
             j += 1
-    while i < len(arr_1):
-        new_list.append(arr_1[i])
-        i += 1
-    while j < len(arr_2):
-        new_list.append(array_2[j])
-        j += 1
-    return new_list
+    if i < len(arr_1):
+        sorted_arr += arr_1[i:]
+    else:
+        sorted_arr += arr_2[j:]
+    return sorted_arr
 
 
-print(pre_merge_sort(array_1, array_2))
+print(divide_and_conquer(merge_sort_arr))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
