@@ -116,7 +116,7 @@ def divide_and_conquer(arr):
     if len(arr) == 1:
         return arr
     else:
-        middle = len(arr)// 2
+        middle = len(arr) // 2
         left_part = divide_and_conquer(arr[:middle])
         right_part = divide_and_conquer(arr[middle:])
         return merge_sort(left_part, right_part)
@@ -138,8 +138,46 @@ def merge_sort(arr_1, arr_2):
         sorted_arr += arr_2[j:]
     return sorted_arr
 
-
 print(divide_and_conquer(merge_sort_arr))
+
+
+# Breadth First Search
+
+
+class TreeNode:
+    def __init__(self, left_node, right_node, value):
+        self.left_node = left_node
+        self.right_node = right_node
+        self.value = value
+
+
+left_child_child = TreeNode(None, None, 5)
+right_child_child = TreeNode(None, None, 100)
+
+left_child = TreeNode(left_child_child, None, 11)
+
+right_child = TreeNode(None, right_child_child, 1)
+
+tree_node = TreeNode(left_child, right_child, 10)
+
+
+def bfs(tree, target):
+    if tree:
+        if tree.value == target:
+            return tree.value
+        else:
+            left_part = bfs(tree.left_node, target)
+            if left_part:
+                return left_part
+            right_part = bfs(tree.right_node, target)
+            return right_part
+
+
+print(bfs(tree_node, 100))
+
+
+
+
 
 
 
