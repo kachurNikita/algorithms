@@ -1,7 +1,7 @@
 
 # Selection sort algorithm / sorting algorithm, O(N**2) time complexity
 
-arr = [8, 11, -1, 24, 0, 3, 2, -100]
+selection_sort_arr = [8, 11, -1, 24, 0, 3, 2, -100]
 
 
 def selection_sort(array):
@@ -19,10 +19,10 @@ def selection_sort(array):
     return array
 
 
-# selection_sort(arr)
+# selection_sort(selection_sort_arr)
 
 # Bubble sort algorithm / sorting algorithm O(N**2) time complexity
-bubble_arr = [1, -1, 5, 2, 9, 4]
+bubble_sort_arr = [1, -1, 5, 2, 9, 4]
 
 
 def bubble_sort(array):
@@ -33,7 +33,7 @@ def bubble_sort(array):
                 array[j + 1], array[j] = array[j], array[j + 1]
     return array
 
-# print(bubble_sort(bubble_arr))
+# print(bubble_sort(bubble_sort_arr))
 
 
 # Quick sort algorithm / sorting algorithm O(n**2) time complexity
@@ -88,23 +88,23 @@ array_2 = [-10, 0, 6, 11, 18]
 # -10, 0, 2, 4, 5, 6, 8, 11, 18,
 
 
-# def pre_merge_sort(arr_1, arr_2):
-#     new_list = []
-#     i = j = 0
-#     while i < len(arr_1) and j < len(arr_2):
-#         if arr_1[i] < arr_2[j]:
-#             new_list.append(arr_1[i])
-#             i += 1
-#         else:
-#             new_list.append(arr_2[j])
-#             j += 1
-#     while i < len(arr_1):
-#         new_list.append(arr_1[i])
-#         i += 1
-#     while j < len(arr_2):
-#         new_list.append(array_2[j])
-#         j += 1
-#     return new_list
+def pre_merge_sort(arr_1, arr_2):
+    new_list = []
+    i = j = 0
+    while i < len(arr_1) and j < len(arr_2):
+        if arr_1[i] < arr_2[j]:
+            new_list.append(arr_1[i])
+            i += 1
+        else:
+            new_list.append(arr_2[j])
+            j += 1
+    while i < len(arr_1):
+        new_list.append(arr_1[i])
+        i += 1
+    while j < len(arr_2):
+        new_list.append(array_2[j])
+        j += 1
+    return new_list
 
 
 # print(pre_merge_sort(array_1, array_2))
@@ -138,7 +138,8 @@ def merge_sort(arr_1, arr_2):
         sorted_arr += arr_2[j:]
     return sorted_arr
 
-print(divide_and_conquer(merge_sort_arr))
+
+# print(divide_and_conquer(merge_sort_arr))
 
 
 # Breadth First Search
@@ -152,6 +153,7 @@ class TreeNode:
 
 
 left_child_child = TreeNode(None, None, 5)
+
 right_child_child = TreeNode(None, None, 100)
 
 left_child = TreeNode(left_child_child, None, 11)
@@ -173,7 +175,36 @@ def bfs(tree, target):
             return right_part
 
 
-print(bfs(tree_node, 100))
+# print(bfs(tree_node, 100))
+
+
+
+# Depth First Search
+
+# Using a Python dictionary to act as an adjacency list
+graph = {
+  '5': ['3', '7'],
+  '3': ['2', '4'],
+  '7': ['8'],
+  '2': [],
+  '4': ['8'],
+  '8': []
+}
+
+visited = set() # Set to keep track of visited nodes of graph.
+
+
+def dfs(graph, node, visited):
+    if node not in visited:
+        print(node)
+        visited.add(node)
+        for neibhour in graph[node]:
+            dfs(graph, neibhour, visited)
+
+
+
+dfs(graph, '5', visited)
+
 
 
 
