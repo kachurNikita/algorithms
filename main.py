@@ -1,10 +1,7 @@
 from collections import defaultdict
 from collections import deque
 
-# Selection sort algorithm / sorting algorithm, O(N**2) time complexity
-
 selection_sort_arr = [8, 11, -1, 24, 0, 3, 2, -100]
-
 
 def selection_sort(array):
     for i in range(len(array)):
@@ -242,10 +239,6 @@ def bfs(tree, target):
 #
 # find_mango_seller(search_queue)
 
-
-
-
-
 my_structure = {
 
     '8': ['3', '1', '6', '7', '5'],
@@ -269,40 +262,141 @@ my_graph = {
     '3': [],
 }
 
-
-def bfs_practice(graph, vertex):
-    counter = 0
-    # this structure (queue) will help me to check adjacent vertexes.
-    queue = deque()
-    # I need to know which vertex was visited!
-    visited = []
-    # So  i added vertex to visited
-    visited.append(vertex)
-    # and add vertex to be checked in FIFO order(first vertex was found, added, second, added, and them first will out first too
-    queue.append(vertex)
-    while queue:
-        counter += 1
-        vertex = queue.popleft()
-        # print(vertex)
-        for i in graph[vertex]:
-            if i not in visited:
-                visited.append(i)
-                queue.append(i)
-    return counter
-
-print(bfs_practice(my_structure, '6'))
-
-
-
-
-
+#
+# def bfs_practice(graph, vertex):
+#     counter = 0
+#     # this structure (queue) will help me to check adjacent vertexes.
+#     queue = deque()
+#     # I need to know which vertex was visited!
+#     visited = []
+#     # So  i added vertex to visited
+#     visited.append(vertex)
+#     # and add vertex to be checked in FIFO order
+#     # (first vertex was found, added, second, added, and them first will out first too
+#     queue.append(vertex)
+#     while queue:
+#         counter += 1
+#         vertex = queue.popleft()
+#         # print(vertex)
+#         for i in graph[vertex]:
+#             if i not in visited:
+#                 visited.append(i)
+#                 queue.append(i)
+#     return counter
+#
+# print(bfs_practice(my_structure, '6'))
+#
+#
 
 
 
+# def traversal_tree(tree):
+#     queue = []
+#     queue.append(tree)
+#     values = []
+#     while len(queue) != 0:
+#         current_vertex = queue.pop(0)
+#         values.append(current_vertex.val)
+#         if current_vertex.left:
+#             queue.append(current_vertex.left)
+#         if current_vertex.right:
+#             queue.append(current_vertex.right)
+#     print(values)
+#
+#
+# traversal_tree(main_tree)
+
+# print(traversal_tree(main_tree))
+# class Node:
+#   def __init__(self, value, left=None, right=None):
+#     self.value = value
+#     self.left = left
+#     self.right = right
+#
+#
+# tree = Node(47)  # The root node of our binary tree
+# tree.left = Node(36)
+# tree.right = Node(66)
+#
+# tree.left.left = Node(25)
+# tree.left.right = Node(39)
+# tree.left.right.left = Node(38)
+# tree.left.right.right = Node(42)
+#
+# tree.right.left = Node(63)
+# tree.right.left.right = Node(64)
+# tree.right.right = Node(68)
+#
+
+# def taversal_tree(tree):
+#     queue = [tree]
+#     visited = []
+#     while len(queue) != 0:
+#         current_vertex = queue.pop(0)
+#         visited.append(current_vertex.value)
+#         if current_vertex.left:
+#             queue.append(current_vertex.left)
+#         if current_vertex.right:
+#             queue.append(current_vertex.right)
+#     print(visited)
+#     value = int(input('Enter value what you are look for: '))
+#     node = tree
+#     found = False
+#     while node and value:
+#         if value == node.value:
+#             found = True
+#             print('Value found')
+#             break
+#         elif value <= node.value:
+#             node = node.left
+#         elif value > node.value:
+#             node = node.right
+#     if not found:
+#         print('Not found')
+#
+#
+# print(taversal_tree(tree))
 
 
 
+class Node:
+    def __init__(self, value, left=None, right=None):
+        self.left = left
+        self.right = right
+        self.value = value
+
+    def __repr__(self):
+        return f'{self.value}'
 
 
+parent_node = Node(4)
+parent_node.right = Node(6)
+parent_node.right.right = Node(7)
+parent_node.right.right.right = Node(9)
+parent_node.right.right.right.right = Node(8)
+parent_node.right.right.right.right.left = Node(5)
+parent_node.right.right.right.right.right = Node(1)
+parent_node.right.right.right.right.right.left = Node(14)
+parent_node.right.right.right.right.right.right = Node(6)
+parent_node.right.right.right.right.right.right.left = Node(3)
+parent_node.right.right.right.right.right.right.right = Node(2)
 
+
+def breadth_first_search(tree, target):
+    queue = [tree]
+    visited_nodes = []
+    while len(queue) != 0:
+        current_node = queue.pop(0)
+        if current_node.value == target:
+            return 'Value found'
+        visited_nodes.append(current_node.value)
+        if current_node.left:
+            queue.append(current_node.left)
+        if current_node.right:
+            queue.append(current_node.right)
+    else:
+        return 'Value not found'
+
+
+print(breadth_first_search(parent_node, 2))
 
