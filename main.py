@@ -400,3 +400,38 @@ def breadth_first_search(tree, target):
 
 print(breadth_first_search(parent_node, 2))
 
+
+
+
+graph = {
+    '4': ['6'],
+    '6': ['7'],
+    '7': ['9'],
+    '9': ['8'],
+    '8': ['5', '1'],
+    '5': [],
+    '1': ['14', '12'],
+    '14': [],
+    '12': ['3', '2'],
+    '3': [],
+    '2': []
+}
+
+
+def breadth_first_search(graph_structure, root):
+    queue = []
+    visited = []
+    queue.append(root)
+    visited.append(root)
+    while len(queue) != 0:
+        root = queue.pop(0)
+        for i in graph_structure[root]:
+                if i not in visited:
+                    visited.append(i)
+                    queue.append(i)
+    print(visited)
+
+
+breadth_first_search(graph, '4')
+
+
