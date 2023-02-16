@@ -328,7 +328,7 @@
 # # tree.right.right = Node(68)
 # #
 #
-# # def taversal_tree(tree):
+# # def traversal_tree(tree):
 # #     queue = [tree]
 # #     visited = []
 # #     while len(queue) != 0:
@@ -355,7 +355,7 @@
 # #         print('Not found')
 # #
 # #
-# # print(taversal_tree(tree))
+# # print(traversal_tree(tree))
 #
 #
 # #
